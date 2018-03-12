@@ -5,7 +5,9 @@
       if($_SERVER['REQUEST_METHOD']=='POST'){
         if(
           isset ($_POST['password']) and
-          isset ($_POST['name']) and
+          isset ($_POST['fname']) and
+          isset ($_POST['surname']) and
+          isset ($_POST['otherName']) and
           isset ($_POST['dob']) and
           isset ($_POST['telNo']) and
           isset ($_POST['office'])
@@ -15,7 +17,9 @@
             $db = new dbOperations();
             if($db->createSub(
               $_POST['password'],
-              $_POST['name'],
+              $_POST['fname'],
+              $_POST['surname'],
+              $_POST['otherName'],
               $_POST['dob'],
               $_POST['telNo'],
               $_POST['office'])

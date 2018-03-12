@@ -8,9 +8,9 @@
 
         }
         /*CRUD -> C -> CREATE  */
-        function createSub($password,$name,$dob,$telNo,$office){
-          $stmt = $this->con->prepare("INSERT INTO `subscriber` ( `password`, `name`, `dob`, `telNo`, `office`) VALUES ( ?, ?, ?, ?, ?)");
-          $stmt->bind_param("sssss",$password, $name, $dob, $telNo, $office );
+        function createSub($password,$fname, $surname, $otherName, $dob,$telNo,$office){
+          $stmt = $this->con->prepare("INSERT INTO `subscriber` ( `password`, `fname`, `surname`, `otherName`, `dob`, `telNo`, `office`) VALUES ( ?, ?, ?, ?, ?, ?, ?)");
+          $stmt->bind_param("sssssss",$password, $fname, $surname, $otherName, $dob, $telNo, $office );
           if($stmt->execute()){
             return true;
           }

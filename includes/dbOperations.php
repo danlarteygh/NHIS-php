@@ -1,4 +1,4 @@
-<<?php
+<?php
       class dbOperations{
         private $con;
         function __construct(){
@@ -8,17 +8,15 @@
 
         }
         /*CRUD -> C -> CREATE  */
-        function createSub($password,$fname, $surname, $otherName, $dob,$telNo,$office){
-          $stmt = $this->con->prepare("INSERT INTO `subscriber` ( `password`, `fname`, `surname`, `otherName`, `dob`, `telNo`, `office`) VALUES ( ?, ?, ?, ?, ?, ?, ?)");
-          $stmt->bind_param("sssssss",$password, $fname, $surname, $otherName, $dob, $telNo, $office );
+      function createSub($fname, $surname, $otherName/*,$password, $dob,$telNo,$office*/){
+          $stmt = $this->con->prepare("INSERT INTO `subscriber` (  `fname`, `surname`, `otherName`/*, `password`, `dob`, `telNo`, `office`, `sex`*/) VALUES ( ?, ?, ?/*, ?, ?, ?, ?, ?*/)");
+        $stmt->bind_param("sss", $fname, $surname, $otherName /*, $password,$dob, $telNo, $office, $sex*/ );
           if($stmt->execute()){
             return true;
           }
           else{
             return false;
-          }
+              }
   }
-
-
       }
  ?>

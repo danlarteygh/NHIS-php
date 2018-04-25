@@ -7,13 +7,13 @@
 
           isset ($_POST['fName']) and
           isset ($_POST['surname']) and
-          isset ($_POST['otherName'])
-          /*and
-          isset ($_POST['password']) and
-          isset ($_POST['dob']) and
+          isset ($_POST['otherName']) and
+          isset ($_POST['dob'])and
+          isset ($_POST['sex'])and
           isset ($_POST['telNo']) and
-          isset ($_POST['office']) and
-          isset ($_POST['sex'])*/
+          isset ($_POST['office'])
+          /*and
+          isset ($_POST['password']) */
           )
           {
             //operate the data further
@@ -22,12 +22,14 @@
 
               $_POST['fName'],
               $_POST['surname'],
-              $_POST['otherName'])) /*,
-              $_POST['password'],
+              $_POST['otherName'],
               $_POST['dob'],
-              $_POST['telNo'],
               $_POST['sex'],
-              $_POST['office']) */
+              $_POST['telNo'],
+              $_POST['office'])) /*,
+              $_POST['password'],
+
+               */
 
               {
                 $response['error'] = false;

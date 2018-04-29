@@ -17,7 +17,7 @@
           {
             //operate the data further
             $db = new dbOperations();
-            if($db->createSub(
+            $result = $db->createSub(
 
               $_POST['fName'],
               $_POST['surname'],
@@ -26,16 +26,23 @@
               $_POST['sex'],
               $_POST['telNo'],
               $_POST['office']/*,
-              $_POST['password']*/))
+            $_POST['password']*/);
 
-
-
-              {
+            if ($result==1)
+            {
                 $response['error'] = false;
                 $response['message']= "User registered successfully";
               }
+              elseif($result == 2){
+			$response['error'] = true;
+			$response['message'] = "Some error occurred please try again";
+		}
+    elseif($result == 0){
+			$response['error'] = true;
+			$response['message'] = "It seems you are already registered";
+		}
           }
-          else{
+          else {
             $response['error'] = true;
             $response['message']= "Required fields are mising";}
           }

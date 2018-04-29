@@ -8,18 +8,22 @@
 
         }
         /*CRUD -> C -> CREATE  */
-      public function createSub($fname, $surname, $otherName, $dob, $sex, $telNo,$office/*,$password*/){
+      public function createSub($fName, $surname, $otherName, $dob, $sex, $telNo,$office/*,$password*/){
+        if($this->isSubExist($surname, $fName, $otherName, $dob)){
+				return 0;}
+        else
+        {
          $dob = implode("-", array_reverse(explode(".", $dob)));
-          $stmt = $this->con->prepare("INSERT INTO `subscriber` (  `fname`, `surname`, `otherName`, `dob`, `sex`, `telNo`, `office`/*,`password`*/) VALUES ( ?, ?, ?, ?, ?, ?, ?/*, ?*/)");
-        $stmt->bind_param("sssssss", $fname, $surname, $otherName, $dob, $sex, $telNo, $office/*, $password*/ );
+          $stmt = $this->con->prepare("INSERT INTO `subscriber` (  `fName`, `surname`, `otherName`, `dob`, `sex`, `telNo`, `office`/*,`password`*/) VALUES ( ?, ?, ?, ?, ?, ?, ?/*, ?*/)");
+        $stmt->bind_param("sssssss", $fName, $surname, $otherName, $dob, $sex, $telNo, $office/*, $password*/ );
           if($stmt->execute()){
-            return true;
+            return 1;
           }
           else{
-            return false;
+            return 2;
               }
   }
-
+}
 public function subLogin($id, $telNo){
   //  $password = md5($pass);
     $stmt = $this->con->prepare("SELECT id FROM subscriber WHERE id = ? AND telNo = ?");
@@ -36,8 +40,12 @@ public function subLogin($id, $telNo){
     return $stmt->get_result()->fetch_assoc();
   }
 
-       private function isSubExist(){
-          $stmt = $this->con->prepare("SELECT id FROM subscriber WHERE telNo = ? OR fName = ? OR surname=? OR dob=? OR otherName=? OR sex=? OR office=? ");
+       private function isSubExist($surname, $fName, $otherName, $dob){
+          $stmt = $this->con->prepare("SELECT id FROM subscriber WHERE fName= ? AND surname=? AND dob=? AND otherName=?");
+          $stmt->bind_param("ssss", $surname, $fName, $otherName, $dob);
+			$stmt->execute();
+			$stmt->store_result();
+			return $stmt->num_rows > 0;
         }
       }
 

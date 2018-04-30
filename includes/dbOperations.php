@@ -45,7 +45,7 @@ public function subLogin($id, $telNo){
           $stmt->bind_param("ssss", $surname, $fName, $otherName, $dob);
 			$stmt->execute();
 			$stmt->store_result();
-			return $stmt->num_rows > 0;
+			return $stmt->num_rows;
         }
       }
 

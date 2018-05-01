@@ -8,14 +8,14 @@
 
         }
         /*CRUD -> C -> CREATE  */
-      public function createSub($fName, $surname, $otherName, $dob, $sex, $telNo,$office/*,$password*/){
+      public function createSub($fName, $surname, $otherName, $dob, $sex, $telNo,$office,$pregnant,$ssnitNo/*,$password*/){
         if($this->isSubExist($surname, $fName, $otherName, $dob)){
 				return 0;}
         else
         {
          $dob = implode("-", array_reverse(explode(".", $dob)));
-          $stmt = $this->con->prepare("INSERT INTO `subscriber` (  `fName`, `surname`, `otherName`, `dob`, `sex`, `telNo`, `office`/*,`password`*/) VALUES ( ?, ?, ?, ?, ?, ?, ?/*, ?*/)");
-        $stmt->bind_param("sssssss", $fName, $surname, $otherName, $dob, $sex, $telNo, $office/*, $password*/ );
+          $stmt = $this->con->prepare("INSERT INTO `subscriber` (  `fName`, `surname`, `otherName`, `dob`, `sex`, `telNo`, `office`, `pregnant`,ssnitNo/*,`password`*/) VALUES ( ?, ?, ?, ?, ?, ?, ?,?,?/*, ?*/)");
+        $stmt->bind_param("sssssssss", $fName, $surname, $otherName, $dob, $sex, $telNo, $office,$pregnant, $ssnitNo/*, $password*/ );
           if($stmt->execute()){
             return 1;
           }

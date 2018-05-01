@@ -10,8 +10,10 @@
           isset ($_POST['otherName']) and
           isset ($_POST['dob'])and
           isset ($_POST['sex'])and
-          isset ($_POST['telNo']) and
-          isset ($_POST['office']/* and
+          isset ($_POST['telNo'])and
+          isset ($_POST['office'])and
+          isset ($_POST['pregnant'])and
+          isset ($_POST['ssnitNo']/* and
           isset ($_POST['password']*/)
           )
           {
@@ -25,7 +27,9 @@
               $_POST['dob'],
               $_POST['sex'],
               $_POST['telNo'],
-              $_POST['office']/*,
+              $_POST['office'],
+              $_POST['pregnant'],
+              $_POST['ssnitNo']/*,
             $_POST['password']*/);
 
             if ($result==1)

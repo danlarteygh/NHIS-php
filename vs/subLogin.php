@@ -17,6 +17,10 @@
       			$response['dob'] = $user['dob'];
             $response['office'] = $user['office'];
       			$response['sex'] = $user['sex'];
+            $response['ssnitNo'] = $user['ssnitNo'];
+            $response['pregnant'] = $user['pregnant'];
+
+
       		}else{
       			$response['error'] = true;
       			$response['message'] = "Invalid membership ID or Telephone Number";

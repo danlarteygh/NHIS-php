@@ -1,5 +1,5 @@
 <?php
-include ('payment.php')
+include ('payment2.php')
 
 ?>
 
@@ -17,8 +17,8 @@ include ('payment.php')
     <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-   
-   
+
+
     <!-- =======================================================
     Theme Name: TelMed
     Theme URL: https://bootstrapmade.com/TelMed-free-medical-bootstrap-theme/
